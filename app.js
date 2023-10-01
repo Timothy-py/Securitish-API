@@ -8,6 +8,7 @@ const errorHandler = require("./src/middlewares/errorHandler");
 
 // ROUTES
 const authRoutes = require("./src/routes/authRoute");
+const safeboxRoutes = require("./src/routes/safeboxRoute");
 
 // Activate express app
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 
 // SET ROUTES
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/safeboxes", safeboxRoutes);
 
 // CONNECT DATABASE
 connectDB();

@@ -13,9 +13,20 @@ const signupSchema = Joi.object({
     ),
 });
 
+const createSafeboxSchema = Joi.object({
+  name: Joi.string().required(),
+  password: Joi.string()
+    .min(8)
+    .pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"))
+    .message(
+      "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character (!@#$%^&*)"
+    ),
+});
 
 const validateUserSignup = validator(signupSchema);
+const validateCreateSafebox = validator(createSafeboxSchema);
 
 module.exports = {
   validateUserSignup,
+  validateCreateSafebox,
 };
