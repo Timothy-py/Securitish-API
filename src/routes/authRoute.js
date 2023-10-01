@@ -1,7 +1,7 @@
+const { signup } = require("../controllers/authController");
+
 const authRouter = require("express").Router();
 
-authRouter.get("/", (req, res)=>{
-    return res.send("UNsafebox API")
-});
+authRouter.post("/signup", signup);
 
 module.exports = authRouter;
