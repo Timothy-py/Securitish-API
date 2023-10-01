@@ -57,3 +57,32 @@
  *              type: string
  *              example: 2023-08-17T06:22:27.136+00:00
  *  */
+
+// *************CONTENT SCHEMA***********************************
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *   Content:
+ *    type: object
+ *    required:
+ *     - name
+ *     - _userId
+ *     - _safeboxId
+ *    properties:
+ *          _id:
+ *              type: string
+ *              example: 64ddbca37ff26a9ea19a7737
+ *          name:
+ *              type: string
+ *              example: Gold
+ *          description:
+ *              type: string
+ *          createdAt:
+ *              type: string
+ *              example: 2023-08-17T06:22:27.136+00:00
+ *          _userId:
+ *              type: string
+ *          _safeboxId:
+ *              type: string
+ *  */

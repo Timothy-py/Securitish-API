@@ -63,11 +63,11 @@ exports.addContent = async (req, res) => {
 
     const { name, description } = value;
 
-    const { id } = req.params;
+    const { safeboxId } = req.params;
     const { safeboxPassword } = req.query;
 
     // Execute operations and handle any errors
-    const safeboxResult = await operations(req, id, safeboxPassword);
+    const safeboxResult = await operations(req, safeboxId, safeboxPassword);
 
     if (safeboxResult.error) {
       // Handle the error returned from operations
@@ -105,11 +105,11 @@ exports.addContent = async (req, res) => {
 exports.getSafeboxContents = async (req, res) => {
   try {
     // Extract the safebox ID and password from the request parameters and query
-    const { id } = req.params;
+    const { safeboxId } = req.params;
     const { safeboxPassword } = req.query;
 
     // Execute operations and handle any errors
-    const safeboxResult = await operations(req, id, safeboxPassword);
+    const safeboxResult = await operations(req, safeboxId, safeboxPassword);
 
     if (safeboxResult.error) {
       // Handle the error returned from operations
@@ -117,7 +117,7 @@ exports.getSafeboxContents = async (req, res) => {
     }
 
     // Retrieve the contents associated with the safebox
-    const contents = await Content.find({ _safeboxId: id });
+    const contents = await Content.find({ _safeboxId: safeboxId });
 
     // Return the contents
     logger.info("Safebox contents retrieved successfully");
