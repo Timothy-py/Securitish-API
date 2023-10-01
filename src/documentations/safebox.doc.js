@@ -46,7 +46,7 @@
  *      summary: Add content to safebox
  *      parameters:
  *          - in: path
- *            name: id
+ *            name: safeboxId
  *            schema:
  *              type: string
  *              required: true
@@ -93,7 +93,7 @@
  *      summary: Get the contents of a safebox
  *      parameters:
  *          - in: path
- *            name: id
+ *            name: safeboxId
  *            schema:
  *              type: string
  *              required: true

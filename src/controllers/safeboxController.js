@@ -85,7 +85,12 @@ exports.addContent = async (req, res) => {
     // Save the content to the database
     const data = await newContent.save();
 
-    logger.info(`New content-[${data.id}] added to safebox-[${safeboxResult.data._id}]`);
+    // Increment safebox content number
+    await Safebox.updateOne({ _id: safeboxId }, { $inc: { nCcontents: 1 } });
+
+    logger.info(
+      `New content-[${data.id}] added to safebox-[${safeboxResult.data._id}]`
+    );
     res
       .status(201)
       .json({ message: "Content added to the safebox successfully", data });
@@ -146,13 +151,16 @@ const operations = async (req, id, safeboxPassword) => {
     // Verify safebox password provided
     const passwordCompare = await safebox.comparePassword(safeboxPassword);
     if (!passwordCompare) {
-      return { error: "Unauthorized. Incorrect safebox password", statusCode: 401 };
+      return {
+        error: "Unauthorized. Incorrect safebox password",
+        statusCode: 401,
+      };
     }
 
     // If all checks pass, return success
     return { success: true, data: safebox };
   } catch (error) {
-    logger.error("Error during operations:", error)
+    logger.error("Error during operations:", error);
     throw error; // Rethrow the error to be caught in the calling function
   }
 };

@@ -10,6 +10,10 @@ const safeboxSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nCcontents:{
+    type: Number,
+    default: 0
+  },
   _userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
