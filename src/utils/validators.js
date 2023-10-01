@@ -5,7 +5,8 @@ const validator = (schema) => (payload) =>
 
 const signupSchema = Joi.object({
   username: Joi.string().required(),
-  password: Joi.string().required()
+  password: Joi.string()
+    .required()
     .min(8)
     .pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"))
     .message(
@@ -23,10 +24,17 @@ const createSafeboxSchema = Joi.object({
     ),
 });
 
+const addContentSchema = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string(),
+});
+
 const validateUserSignup = validator(signupSchema);
 const validateCreateSafebox = validator(createSafeboxSchema);
+const validateAddContent = validator(addContentSchema);
 
 module.exports = {
   validateUserSignup,
   validateCreateSafebox,
+  validateAddContent,
 };
