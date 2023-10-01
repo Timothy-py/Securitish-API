@@ -17,6 +17,7 @@ const signupSchema = Joi.object({
 const createSafeboxSchema = Joi.object({
   name: Joi.string().required(),
   password: Joi.string()
+    .required()
     .min(8)
     .pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"))
     .message(
