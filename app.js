@@ -4,6 +4,7 @@ const express = require("express");
 const connectDB = require("./src/utils/connectDB");
 const logger = require("./logger/logger");
 const swaggerDocs = require("./src/documentations/swagger");
+const errorHandler = require("./src/middlewares/errorHandler");
 
 // ROUTES
 const authRoutes = require("./src/routes/authRoute");
@@ -20,6 +21,9 @@ app.use("/api/v1/auth", authRoutes);
 
 // CONNECT DATABASE
 connectDB();
+
+// ERROR HANDLER
+app.use(errorHandler);
 
 // SWAGGER DOCS
 swaggerDocs(app, APP_PORT);

@@ -42,7 +42,6 @@ function swaggerDocs(app, port) {
   logger.info(
     `Dev: Swagger Docs available at http://localhost:${port}/api-docs`
   );
-  //   console.log('Prod: Swager Docs available at https://afrisplash-473196ceadbb.herokuapp.com/api-docs')
   return;
 }
 
