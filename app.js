@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 
+const connectDB = require("./src/utils/connectDB");
+
 // ROUTES
 const authRoutes = require("./src/routes/authRoute");
 
@@ -13,6 +15,9 @@ app.use(express.json());
 
 // SET ROUTES
 app.use("/api/v1/auth", authRoutes);
+
+// CONNECT DATABASE
+connectDB();
 
 app.listen(APP_PORT, () => {
   console.log(`Server is running on PORT: ${APP_PORT}`);
