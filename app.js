@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 
 const connectDB = require("./src/utils/connectDB");
+const logger = require("./logger/logger");
 
 // ROUTES
 const authRoutes = require("./src/routes/authRoute");
@@ -20,7 +21,7 @@ app.use("/api/v1/auth", authRoutes);
 connectDB();
 
 app.listen(APP_PORT, () => {
-  console.log(`Server is running on PORT: ${APP_PORT}`);
+  logger.info(`Server is running on PORT: ${APP_PORT}`);
 });
 
 module.exports = app;
